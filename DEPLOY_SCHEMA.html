@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SG Property Bot - Schema Deployment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0066cc;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+        }
+        .steps {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #0066cc;
+            margin: 20px 0;
+        }
+        .step {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #0066cc;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 400px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .btn-copy {
+            background: #0066cc;
+            color: white;
+        }
+        .btn-copy:hover {
+            background: #0052a3;
+        }
+        .btn-open {
+            background: #28a745;
+            color: white;
+        }
+        .btn-open:hover {
+            background: #218838;
+        }
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 SG Property Bot - Database Schema Deployment</h1>
+        
+        <div class="info">
+            <strong>✅ Infrastructure Status:</strong> API Live, PostgreSQL Ready, Telegram Configured
+        </div>
+        
+        <h2>📋 Quick Deploy (2-3 minutes)</h2>
+        
+        <div class="steps">
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Go to Fly.io Dashboard</strong><br>
+                <a href="https://fly.io/dashboard/ashraf-ali-610/managed_postgres/nlkxjo5wgmloy93v" target="_blank">
+                    https://fly.io/dashboard
+                </a>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Select PostgreSQL Cluster</strong><br>
+                Look for <code>sg-property-db</code> and click it
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Open Web Terminal</strong><br>
+                Click the <code>Web Terminal</code> or <code>SQL</code> button
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Copy Schema Below</strong><br>
+                Use the "Copy to Clipboard" button below
+            </div>
+            
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Paste & Execute</strong><br>
+                Paste into terminal and press Enter
+            </div>
+        </div>
+        
+        <h2>📝 Database Schema SQL</h2>
+        
+        <p>Click "Copy to Clipboard" to copy the entire schema (17 KB, 13 tables, 3 views)</p>
+        
+        <div class="button-group">
+            <button class="btn-copy" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+            <button class="btn-open" onclick="openDashboard()">🌐 Open Dashboard</button>
+        </div>
+        
+        <textarea id="schemaText" readonly>
+-- SG Property Digital Twin Bot - Database Schema
+-- PostgreSQL DDL for Singapore Commercial/Industrial Property Intelligence Platform
+-- 13 Tables + 3 Analytics Views + Audit Trail + Full-Text Search Capabilities
+
+-- Enable PostgreSQL extensions
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";           -- UUID generation
+CREATE EXTENSION IF NOT EXISTS "pg_trgm";            -- Text search with trigrams
+CREATE EXTENSION IF NOT EXISTS "plpgsql";            -- PL/pgSQL language support
+
+-- ============================================================
+-- CORE PROPERTY TABLE - Foundation of the database
+-- ============================================================
+CREATE TABLE public.properties (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    
+    -- Basic Identification
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(500) NOT NULL UNIQUE,
+    postcode VARCHAR(10) NOT NULL,
+    region VARCHAR(100) NOT NULL,
+    
+    -- Property Classification
+    property_type VARCHAR(50) NOT NULL,  -- B1, B2, Office, Retail, Industrial, Logistics, Conservation, Mixed
+    sub_type VARCHAR(100),
+    
+    -- Physical Characteristics
+    land_area DECIMAL(12, 2),           -- Square feet
+    building_area DECIMAL(12, 2),       -- Square feet
+    plot_size DECIMAL(12, 2),           -- Square feet
+    floor_count INT,
+    unit_count INT,
+    year_built INT,
+    
+    -- Tenure & Ownership
+    tenure_type VARCHAR(50),
+    tenure_end_date DATE,
+    remaining_years INT GENERATED ALWAYS AS (
+        EXTRACT(YEAR FROM tenure_end_date) - EXTRACT(YEAR FROM CURRENT_DATE)
+    ) STORED,
+    
+    -- Market Metrics
+    latest_price DECIMAL(15, 2),
+    price_per_sqft DECIMAL(10, 2),
+    latest_rental DECIMAL(15, 2),
+    rental_per_sqft DECIMAL(10, 2),
+    
+    -- Source & Audit
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_scraped_at TIMESTAMP,
+    scraped_source VARCHAR(100),
+    
+    -- Constraints
+    CONSTRAINT valid_tenure CHECK (tenure_type IN ('Freehold', 'Leasehold_99yr', 'Leasehold_60yr', 'Others')),
+    CONSTRAINT valid_type CHECK (property_type IN ('B1', 'B2', 'Office', 'Retail', 'Industrial', 'Logistics', 'Conservation', 'Mixed'))
+);
+
+-- Indexes for fast queries
+CREATE INDEX idx_properties_address ON properties(address);
+CREATE INDEX idx_properties_postcode ON properties(postcode);
+CREATE INDEX idx_properties_type ON properties(property_type);
+CREATE INDEX idx_properties_price ON properties(latest_price);
+CREATE INDEX idx_properties_date ON properties(created_at DESC);
+CREATE INDEX idx_properties_search ON properties USING GIN(address gin_trgm_ops);
+
+-- ============================================================
+-- LISTINGS TABLE - Track all property listings (sales/leases)
+-- ============================================================
+CREATE TABLE public.listings (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    property_id UUID NOT NULL REFERENCES properties(id) ON DELETE CASCADE,
+    agent_id UUID,
+    
+    -- Listing Metadata
+    listing_source VARCHAR(100) NOT NULL,  -- PropertyGuru, EdgeProp, 99.co, etc
+    listing_url TEXT,
+    listing_external_id VARCHAR(200),
+    
+    -- Listing Details
+    listing_type VARCHAR(50) NOT NULL,     -- Sale, Rental, Auction
+    listing_sub_type VARCHAR(100),
+    price DECIMAL(15, 2),
+    price_per_sqft DECIMAL(10, 2),
+    rental_price DECIMAL(15, 2),
+    unit_size DECIMAL(10, 2),
+    unit_count INT,
+    
+    -- Status Timeline
+    status VARCHAR(50) DEFAULT 'active',   -- active, sold, withdrawn, expired, leased
+    listing_date DATE NOT NULL,
+    last_updated DATE,
+    sold_date DATE,
+    
+    -- Descriptive Content
+    description TEXT,
+    features TEXT,  -- JSON format
+    
+    -- Audit Trail
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    scraped_at TIMESTAMP,
+    
+    CONSTRAINT valid_listing_type CHECK (listing_type IN ('Sale', 'Rental', 'Auction', 'Lease'))
+);
+
+CREATE INDEX idx_listings_property ON listings(property_id);
+CREATE INDEX idx_listings_status ON listings(status);
+CREATE INDEX idx_listings_date ON listings(listing_date DESC);
+CREATE INDEX idx_listings_price ON listings(price);
+CREATE INDEX idx_listings_source ON listings(listing_source);
+
+-- ============================================================
+-- BUILDINGS TABLE - Detailed building profiles & amenities
+-- ============================================================
+CREATE TABLE public.buildings (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    property_id UUID NOT NULL UNIQUE REFERENCES properties(id) ON DELETE CASCADE,
+    
+    -- Building Characteristics
+    building_name VARCHAR(255),
+    developer VARCHAR(255),
+    architect VARCHAR(255),
+    contractor VARCHAR(255),
+    
+    -- Physical Features
+    year_completed INT,
+    basement_levels INT,
+    total_levels INT,
+    built_up_area DECIMAL(12, 2),
+    gross_floor_area DECIMAL(12, 2),
+    net_floor_area DECIMAL(12, 2),
+    
+    -- Building Systems
+    has_aircon BOOLEAN DEFAULT FALSE,
+    has_carpark BOOLEAN DEFAULT FALSE,
+    carpark_spaces INT,
+    carpark_ratio DECIMAL(5, 2),
+    
+    -- Services & Amenities
+    amenities TEXT,  -- JSON array: [fitness center, meeting rooms, cafe, etc]
+    services TEXT,   -- JSON array: [24/7 security, cleaning, maintenance, etc]
+    
+    -- Sustainability
+    has_green_cert BOOLEAN DEFAULT FALSE,
+    green_certifications TEXT,  -- LEED, BCA Green Mark, etc
+    
+    -- Content
+    description TEXT,
+    highlights TEXT,
+    
+    -- Audit
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_buildings_property ON buildings(property_id);
+
+-- ============================================================
+-- PRICE_HISTORY TABLE - Track price changes over time
+-- ============================================================
+CREATE TABLE public.price_history (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    property_id UUID NOT NULL REFERENCES properties(id) ON DELETE CASCADE,
+    
+    -- Price Tracking
+    price DECIMAL(15, 2) NOT NULL,
+    price_per_sqft DECIMAL(10, 2),
+    price_change_pct DECIMAL(8, 2),
+    
+    -- Timeline
+    recorded_date DATE NOT NULL,
+    source VARCHAR(100),
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT unique_price_date UNIQUE(property_id, recorded_date)
+);
+
+CREATE INDEX idx_price_history_property ON price_history(property_id);
+CREATE INDEX idx_price_history_date ON price_history(recorded_date DESC);
+
+-- ============================================================
+-- AGENTS TABLE - Real estate professionals
+-- ============================================================
+CREATE TABLE public.agents (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    
+    -- Basic Info
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
+    phone VARCHAR(20),
+    
+    -- Agency
+    agency_name VARCHAR(255),
+    agency_website TEXT,
+    
+    -- Professional Details
+    license_number VARCHAR(100),
+    specialization VARCHAR(100),  -- Residential, Commercial, Industrial, etc
+    years_experience INT,
+    
+    -- Contact
+    office_address VARCHAR(500),
+    office_phone VARCHAR(20),
+    
+    -- Metadata
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_seen_at TIMESTAMP
+);
+
+CREATE INDEX idx_agents_name ON agents(name);
+CREATE INDEX idx_agents_agency ON agents(agency_name);
+CREATE INDEX idx_agents_email ON agents(email);
+
+-- ============================================================
+-- TRANSACTIONS TABLE - Sales and lease records
+-- ============================================================
+CREATE TABLE public.transactions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    property_id UUID NOT NULL REFERENCES properties(id) ON DELETE CASCADE,
+    agent_id UUID REFERENCES agents(id),
+    
+    -- Transaction Details
+    transaction_type VARCHAR(50) NOT NULL,  -- Sale, Lease, Rental
+    transaction_date DATE NOT NULL,
+    
+    -- Financial
+    transaction_price DECIMAL(15, 2),
+    psf_transaction DECIMAL(10, 2),
+    
+    -- Parties (JSON format for flexibility)
+    seller_info TEXT,
+    buyer_info TEXT,
+    
+    -- Additional Details
+    unit_number VARCHAR(50),
+    floor_number INT,
+    
+    -- Metadata
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    source VARCHAR(100)
+);
+
+CREATE INDEX idx_transactions_property ON transactions(property_id);
+CREATE INDEX idx_transactions_date ON transactions(transaction_date DESC);
+CREATE INDEX idx_transactions_type ON transactions(transaction_type);
+
+-- ============================================================
+-- TENANTS TABLE - Tenant information tracking
+-- ============================================================
+CREATE TABLE public.tenants (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    
+    -- Tenant Identity
+    name VARCHAR(255) NOT NULL,
+    industry VARCHAR(100),
+    company_type VARCHAR(50),  -- SME, MNC, Startup, etc
+    
+    -- Contact
+    email VARCHAR(255),
+    phone VARCHAR(20),
+    website TEXT,
+    
+    -- Business Details
+    business_description TEXT,
+    employee_count INT,
+    
+    -- Metadata
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_tenants_name ON tenants(name);
+CREATE INDEX idx_tenants_industry ON tenants(industry);
+
+-- ============================================================
+-- NEWS_ARTICLES TABLE - Building and market news
+-- ============================================================
+CREATE TABLE public.news_articles (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    property_id UUID REFERENCES properties(id) ON DELETE SET NULL,
+    
+    -- Article Content
+    title VARCHAR(500) NOT NULL,
+    description TEXT,
+    content TEXT,
+    url TEXT UNIQUE,
+    
+    -- Source & Dates
+    source VARCHAR(100),
+    published_date DATE,
+    
+    -- Classification
+    article_type VARCHAR(50),  -- Development, Market, News, Analysis, etc
+    keywords TEXT,  -- JSON array
+    
+    -- Relevance
+    relevance_score DECIMAL(5, 2),  -- 0-100 rating
+    
+    -- Metadata
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_news_property ON news_articles(property_id);
+CREATE INDEX idx_news_date ON news_articles(published_date DESC);
+CREATE INDEX idx_news_type ON news_articles(article_type);
+
+-- ============================================================
+-- SCRAPE_LOGS TABLE - Audit trail for data collection
+-- ============================================================
+CREATE TABLE public.scrape_logs (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    
+    -- Scrape Details
+    scraper_name VARCHAR(100) NOT NULL,
+    scrape_source VARCHAR(100),  -- PropertyGuru, URA, 99.co, etc
+    
+    -- Results
+    records_found INT,
+    records_processed INT,
+    records_inserted INT,
+    records_updated INT,
+    
+    -- Status
+    status VARCHAR(50),  -- success, partial_success, failed
+    error_message TEXT,
+    
+    -- Timing
+    start_time TIMESTAMP,
+    end_time TIMESTAMP,
+    duration_seconds INT GENERATED ALWAYS AS (
+        EXTRACT(EPOCH FROM (end_time - start_time))::INT
+    ) STORED,
+    
+    -- Metadata
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_scrape_logs_scraper ON scrape_logs(scraper_name);
+CREATE INDEX idx_scrape_logs_date ON scrape_logs(created_at DESC);
+CREATE INDEX idx_scrape_logs_status ON scrape_logs(status);
+
+-- ============================================================
+-- API_USAGE TABLE - Track API quotas and usage
+-- ============================================================
+CREATE TABLE public.api_usage (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    
+    -- API Info
+    api_name VARCHAR(100) NOT NULL,  -- URA, RapidAPI, etc
+    
+    -- Usage Tracking
+    requests_today INT DEFAULT 0,
+    requests_month INT DEFAULT 0,
+    requests_total INT DEFAULT 0,
+    quota_limit INT,
+    
+    -- Dates
+    reset_date DATE,
+    last_request_at TIMESTAMP,
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_api_usage_name ON api_usage(api_name);
+
+-- ============================================================
+-- DATA_SOURCES TABLE - Manage connected data sources
+-- ============================================================
+CREATE TABLE public.data_sources (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    
+    -- Source Identity
+    name VARCHAR(100) NOT NULL UNIQUE,
+    url TEXT,
+    description TEXT,
+    
+    -- Configuration
+    is_active BOOLEAN DEFAULT TRUE,
+    scrape_frequency VARCHAR(50),  -- daily, hourly, weekly
+    last_scraped_at TIMESTAMP,
+    next_scrape_at TIMESTAMP,
+    
+    -- Credentials (encrypted in production)
+    api_key TEXT,
+    api_secret TEXT,
+    
+    -- Statistics
+    total_records INT,
+    last_error TEXT,
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_sources_active ON data_sources(is_active);
+
+-- ============================================================
+-- ALERTS TABLE - Configure user alerts
+-- ============================================================
+CREATE TABLE public.alerts (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    
+    -- Alert Configuration
+    alert_type VARCHAR(100) NOT NULL,  -- price_drop, new_listing, market_change, etc
+    alert_name VARCHAR(255),
+    
+    -- Trigger Conditions
+    property_id UUID REFERENCES properties(id) ON DELETE CASCADE,
+    target_property_type VARCHAR(50),
+    target_region VARCHAR(100),
+    
+    -- Alert Thresholds
+    price_threshold DECIMAL(15, 2),
+    price_change_pct DECIMAL(8, 2),
+    
+    -- Notification
+    notification_method VARCHAR(50),  -- telegram, email, sms
+    notification_target TEXT,
+    
+    -- Status
+    is_active BOOLEAN DEFAULT TRUE,
+    last_triggered_at TIMESTAMP,
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_alerts_active ON alerts(is_active);
+CREATE INDEX idx_alerts_property ON alerts(property_id);
+
+-- ============================================================
+-- USER_SETTINGS TABLE - Store user preferences
+-- ============================================================
+CREATE TABLE public.user_settings (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    
+    -- Preferences
+    favorite_regions TEXT,  -- JSON array
+    watch_list TEXT,  -- JSON array of property IDs
+    property_type_preference VARCHAR(100),
+    price_range_min DECIMAL(15, 2),
+    price_range_max DECIMAL(15, 2),
+    
+    -- Notification Preferences
+    email_alerts BOOLEAN DEFAULT FALSE,
+    telegram_alerts BOOLEAN DEFAULT TRUE,
+    daily_digest BOOLEAN DEFAULT TRUE,
+    weekly_report BOOLEAN DEFAULT TRUE,
+    
+    -- Interface
+    theme VARCHAR(50),  -- light, dark
+    language VARCHAR(10),  -- en, zh
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ============================================================
+-- VIEWS - Analytics and Reporting
+-- ============================================================
+
+-- Market Analysis View
+CREATE VIEW property_market_analysis AS
+SELECT 
+    p.property_type,
+    p.region,
+    COUNT(*) as property_count,
+    AVG(p.latest_price) as avg_price,
+    MIN(p.latest_price) as min_price,
+    MAX(p.latest_price) as max_price,
+    AVG(p.price_per_sqft) as avg_psf,
+    AVG(p.latest_rental) as avg_rental
+FROM properties p
+GROUP BY p.property_type, p.region;
+
+-- Building Performance View
+CREATE VIEW building_performance AS
+SELECT 
+    b.property_id,
+    p.name,
+    p.address,
+    COUNT(DISTINCT l.id) as listing_count,
+    COUNT(DISTINCT t.id) as transaction_count,
+    AVG(ph.price) as avg_price_trend,
+    MAX(ph.recorded_date) as latest_price_date
+FROM buildings b
+LEFT JOIN properties p ON b.property_id = p.id
+LEFT JOIN listings l ON p.id = l.property_id
+LEFT JOIN transactions t ON p.id = t.property_id
+LEFT JOIN price_history ph ON p.id = ph.property_id
+GROUP BY b.property_id, p.name, p.address;
+
+-- Agent Statistics View
+CREATE VIEW agent_statistics AS
+SELECT 
+    a.id,
+    a.name,
+    a.agency_name,
+    COUNT(DISTINCT l.id) as listings_count,
+    COUNT(DISTINCT t.id) as transactions_count,
+    AVG(l.price) as avg_listing_price,
+    a.last_seen_at
+FROM agents a
+LEFT JOIN listings l ON a.id = l.agent_id
+LEFT JOIN transactions t ON a.id = t.agent_id
+GROUP BY a.id, a.name, a.agency_name;
+
+-- ============================================================
+-- TRIGGERS - Maintain data integrity
+-- ============================================================
+
+-- Auto-update properties.updated_at timestamp
+CREATE OR REPLACE FUNCTION update_properties_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER properties_update_timestamp
+BEFORE UPDATE ON properties
+FOR EACH ROW
+EXECUTE FUNCTION update_properties_timestamp();
+
+-- Auto-update listings.updated_at timestamp
+CREATE OR REPLACE FUNCTION update_listings_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER listings_update_timestamp
+BEFORE UPDATE ON listings
+FOR EACH ROW
+EXECUTE FUNCTION update_listings_timestamp();
+
+-- ============================================================
+-- GRANTS - Security Permissions
+-- ============================================================
+
+-- Grant permissions to application user (if needed)
+-- GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO app_user;
+-- GRANT USAGE ON ALL SEQUENCES IN SCHEMA public TO app_user;
+
+-- ============================================================
+-- INITIALIZATION COMMENTS
+-- ============================================================
+
+COMMENT ON TABLE properties IS 'Core property records for Singapore commercial/industrial properties (B1, B2)';
+COMMENT ON TABLE listings IS 'Active and historical property listings from multiple sources';
+COMMENT ON TABLE buildings IS 'Detailed building profiles with amenities and characteristics';
+COMMENT ON TABLE price_history IS 'Historical price tracking for market trend analysis';
+COMMENT ON TABLE agents IS 'Real estate professional information and contacts';
+COMMENT ON TABLE transactions IS 'Completed sales and lease transactions';
+COMMENT ON TABLE tenants IS 'Tenant company information and details';
+COMMENT ON TABLE news_articles IS 'News and articles related to properties and market';
+COMMENT ON TABLE scrape_logs IS 'Audit trail of all data scraping operations';
+COMMENT ON TABLE api_usage IS 'API quota and usage tracking';
+COMMENT ON TABLE data_sources IS 'Connected data sources and configurations';
+COMMENT ON TABLE alerts IS 'User-configured alerts and notifications';
+COMMENT ON TABLE user_settings IS 'User preferences and settings';
+
+-- ============================================================
+-- Schema deployment complete
+-- Tables: 13 | Views: 3 | Indexes: 30+ | Triggers: 2
+-- Ready for data ingestion from PropertyGuru, URA, 99.co, EdgeProp
+-- ============================================================
+        </textarea>
+        
+        <h2>✅ After Deployment</h2>
+        
+        <div class="success">
+            <strong>Next Steps:</strong>
+            <ul>
+                <li>✅ Schema deployed with 13 tables and 3 views</li>
+                <li>✅ Database indexes created for performance</li>
+                <li>✅ Triggers configured for audit trail</li>
+                <li>→ Ready for Phase 2: Data source implementation</li>
+                <li>→ PropertyGuru, URA, 99.co scrapers can begin</li>
+                <li>→ Telegram daily alerts ready to send</li>
+            </ul>
+        </div>
+        
+        <h2>📊 Schema Summary</h2>
+        
+        <div class="info">
+            <strong>13 Core Tables:</strong><br>
+            properties, listings, buildings, price_history, agents, transactions, tenants, 
+            news_articles, scrape_logs, api_usage, data_sources, alerts, user_settings
+            <br><br>
+            <strong>3 Analytics Views:</strong><br>
+            property_market_analysis, building_performance, agent_statistics
+            <br><br>
+            <strong>Performance Features:</strong><br>
+            30+ indexes, full-text search, automatic timestamps, audit triggers
+        </div>
+        
+        <script>
+            function copyToClipboard() {
+                const textarea = document.getElementById('schemaText');
+                textarea.select();
+                document.execCommand('copy');
+                
+                alert('✅ Schema copied to clipboard!\n\nNow:\n1. Open Fly.io dashboard\n2. Go to sg-property-db\n3. Open Web Terminal\n4. Paste and execute');
+            }
+            
+            function openDashboard() {
+                window.open('https://fly.io/dashboard/ashraf-ali-610/managed_postgres/nlkxjo5wgmloy93v', '_blank');
+            }
+        </script>
+    </div>
+</body>
+</html>
