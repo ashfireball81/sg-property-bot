@@ -1,0 +1,50 @@
+app = "sg-property-bot"
+primary_region = "sin"  # Singapore
+
+[build]
+builder = "paketobuildpacks"
+
+[env]
+NODE_ENV = "production"
+API_PORT = "3000"
+
+[[services]]
+protocol = "tcp"
+internal_port = 3000
+processes = ["app"]
+
+[services.concurrency]
+type = "requests"
+hard_limit = 1000
+soft_limit = 200
+
+[[services.tcp_checks]]
+grace_period = "1s"
+interval = "10s"
+timeout = "5s"
+
+[http_service]
+internal_port = 3000
+force_https = true
+auto_start_machines = true
+auto_stop_machines = true
+min_machines_running = 1
+
+[[http_service.checks]]
+grace_period = "30s"
+interval = "15s"
+timeout = "10s"
+method = "GET"
+path = "/health"
+
+[[statics]]
+guest_path = "/app/public"
+url_prefix = "/public"
+
+[env]
+DATABASE_URL = "postgresql://user:pass@db.internal:5432/sg_property_bot"
+REDIS_URL = "redis://redis.internal:6379"
+
+[mounts]
+source = "logs"
+destination = "/app/logs"

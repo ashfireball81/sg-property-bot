@@ -1,0 +1,321 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================
+// Core Models
+// ============================================================
+
+model Property {
+  id String @id @default(uuid())
+
+  // Basic Information
+  name         String
+  address      String @unique
+  postcode     String
+  region       String?
+
+  // Classification
+  propertyType String // B1, B2, Office, Retail, Industrial, etc
+  subType      String?
+
+  // Physical Details
+  landArea       Decimal? @db.Decimal(12, 2)
+  buildingArea   Decimal? @db.Decimal(12, 2)
+  plotSize       Decimal? @db.Decimal(12, 2)
+  floorCount     Int?
+  unitCount      Int?
+  yearBuilt      Int?
+
+  // Tenure
+  tenureType    String?
+  tenureEndDate DateTime?
+  remainingYears Int?
+
+  // Market Info
+  latestPrice      Decimal? @db.Decimal(15, 2)
+  pricePerSqft     Decimal? @db.Decimal(10, 2)
+  latestRental     Decimal? @db.Decimal(15, 2)
+  rentalPerSqft    Decimal? @db.Decimal(10, 2)
+
+  // Metadata
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  lastScrapedAt  DateTime?
+  scrapedSource  String?
+
+  // Relations
+  listings           Listing[]
+  priceHistory       PriceHistory[]
+  buildingProfile    BuildingProfile?
+  transactions       Transaction[]
+  articles           Article[]
+  alerts             Alert[]
+
+  @@index([address])
+  @@index([postcode])
+  @@index([propertyType])
+  @@index([latestPrice])
+  @@index([createdAt])
+}
+
+model Listing {
+  id String @id @default(uuid())
+
+  // References
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  agentId String?
+  agent   Agent?  @relation(fields: [agentId], references: [id], onDelete: SetNull)
+
+  // Listing Info
+  listingSource    String
+  listingUrl       String?
+  listingExternalId String?
+
+  listingType String // Sale, Rental, Auction, Lease
+  listingSubType String?
+  price             Decimal? @db.Decimal(15, 2)
+  pricePerSqft      Decimal? @db.Decimal(10, 2)
+  rentalPrice       Decimal? @db.Decimal(15, 2)
+  unitSize          Decimal? @db.Decimal(10, 2)
+  unitCount         Int?
+
+  // Status
+  status       String @default("active")
+  listingDate  DateTime
+  lastUpdated  DateTime?
+  soldDate     DateTime?
+
+  description String?
+  features    String?
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  scrapedAt DateTime?
+  dataHash  String?
+
+  @@index([propertyId])
+  @@index([agentId])
+  @@index([listingSource])
+  @@index([status])
+  @@index([listingDate])
+}
+
+model Agent {
+  id String @id @default(uuid())
+
+  name            String
+  company         String?
+  email           String?
+  phone           String?
+  licenseNumber   String?
+
+  url             String?
+  profileImageUrl String?
+  bio             String?
+
+  listingsCount Int @default(0)
+  soldCount     Int @default(0)
+  rating        Decimal? @db.Decimal(3, 2)
+  reviewsCount  Int @default(0)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  externalId      String?
+  externalSource  String?
+
+  listings      Listing[]
+  transactions  Transaction[]
+
+  @@index([name])
+  @@index([company])
+}
+
+model PriceHistory {
+  id String @id @default(uuid())
+
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  recordDate       DateTime
+  avgPrice         Decimal? @db.Decimal(15, 2)
+  minPrice         Decimal? @db.Decimal(15, 2)
+  maxPrice         Decimal? @db.Decimal(15, 2)
+  medianPrice      Decimal? @db.Decimal(15, 2)
+  pricePerSqft     Decimal? @db.Decimal(10, 2)
+
+  activeListingsCount Int?
+  newListingsCount    Int?
+  soldCount           Int?
+
+  avgRental      Decimal? @db.Decimal(15, 2)
+  rentalPerSqft  Decimal? @db.Decimal(10, 2)
+
+  createdAt   DateTime @default(now())
+  dataSource  String?
+
+  @@unique([propertyId, recordDate])
+  @@index([propertyId])
+  @@index([recordDate])
+}
+
+model BuildingProfile {
+  id String @id @default(uuid())
+
+  propertyId String @unique
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  description        String?
+  buildingUseClass   String?
+  ageCategory        String?
+  architecturalStyle String?
+
+  amenities          String?
+  securityFeatures   String?
+  parkingSpaces      Int?
+  loadingBay         Int?
+
+  nearbyMrt          String?
+  nearbyBusStops     Int?
+  nearbySchools      Int?
+  nearbyHospitals    Int?
+  nearbyShopping     Int?
+  walkabilityScore   Int?
+
+  tenantMix          String?
+  majorTenants       String?
+  occupancyRate      Decimal? @db.Decimal(5, 2)
+  tenantDiversity    String?
+
+  managementCompany      String?
+  managementContact      String?
+  sinkingFund            Decimal? @db.Decimal(15, 2)
+  maintenanceCostPerSqft Decimal? @db.Decimal(10, 2)
+
+  greenBuildingCert String?
+  energyEfficiencyRating String?
+  renewableEnergy   Boolean @default(false)
+
+  photosUrls    String?
+  videoUrl      String?
+  virtualTourUrl String?
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  lastVerifiedAt DateTime?
+
+  @@index([propertyId])
+}
+
+model Transaction {
+  id String @id @default(uuid())
+
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  agentId String?
+  agent   Agent?  @relation(fields: [agentId], references: [id], onDelete: SetNull)
+
+  transactionType String
+  transactionDate DateTime
+
+  transactionPrice Decimal @db.Decimal(15, 2)
+  pricePerSqft     Decimal? @db.Decimal(10, 2)
+
+  unitSize         Decimal? @db.Decimal(10, 2)
+  unitFloor        Int?
+  unitNumber       String?
+  buyerProfile     String?
+  tenureAtTransaction String?
+
+  createdAt   DateTime @default(now())
+  source      String?
+  externalId  String?
+
+  @@index([propertyId])
+  @@index([transactionDate])
+}
+
+model Article {
+  id String @id @default(uuid())
+
+  propertyId String?
+  property   Property? @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+
+  title       String
+  content     String?
+  summary     String?
+  url         String @unique
+  source      String?
+  sourceName  String?
+
+  category    String?
+  sentiment   String?
+  keywords    String?
+
+  publishedDate DateTime?
+  fetchedDate   DateTime?
+  createdAt     DateTime @default(now())
+
+  imageUrl String?
+
+  @@index([propertyId])
+  @@index([publishedDate])
+  @@index([category])
+}
+
+model Alert {
+  id String @id @default(uuid())
+
+  alertType  String
+  propertyId String?
+  property   Property? @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+
+  triggerValue Decimal? @db.Decimal(15, 2)
+  conditionMet Boolean @default(false)
+
+  status       String @default("active")
+  isTriggered  Boolean @default(false)
+  triggeredAt  DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([propertyId])
+  @@index([status])
+}
+
+model DataSyncLog {
+  id String @id @default(uuid())
+
+  syncSource      String
+  syncType        String?
+
+  recordsProcessed Int
+  recordsInserted  Int
+  recordsUpdated   Int
+  recordsFailed    Int
+
+  status           String
+  errorMessage     String?
+
+  startedAt    DateTime
+  completedAt  DateTime?
+  durationSeconds Int?
+
+  createdAt DateTime @default(now())
+
+  @@index([syncSource])
+  @@index([startedAt])
+}

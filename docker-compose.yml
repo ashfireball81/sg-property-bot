@@ -1,0 +1,86 @@
+# SG Property Bot - Docker Compose for local development
+
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: sg-property-bot-db
+    environment:
+      POSTGRES_USER: ${DB_USER:-propertybot}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-propertybot123}
+      POSTGRES_DB: ${DB_NAME:-sg_property_bot}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U propertybot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: sg-property-bot-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Node.js API Server
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: sg-property-bot-api
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://propertybot:propertybot123@postgres:5432/sg_property_bot
+      REDIS_URL: redis://redis:6379
+      API_PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./api/src:/app/src
+      - ./logs:/app/logs
+    command: npm run dev
+
+  # Python Scraper (optional - runs separately)
+  scraper:
+    build:
+      context: ./scraper
+      dockerfile: Dockerfile
+    container_name: sg-property-bot-scraper
+    environment:
+      DATABASE_URL: postgresql://propertybot:propertybot123@postgres:5432/sg_property_bot
+      LOG_LEVEL: info
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./scraper:/app
+      - ./logs:/app/logs
+    profiles:
+      - scraper  # Run with: docker-compose --profile scraper up
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  default:
+    name: sg-property-bot-network
