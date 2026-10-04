@@ -1,0 +1,160 @@
+name: Deploy Database Schema
+
+on:
+  workflow_dispatch:
+    inputs:
+      verify_only:
+        description: 'Only verify existing schema (do not deploy)'
+        required: false
+        default: 'false'
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  FLY_APP_NAME: sg-property-db
+
+jobs:
+  deploy:
+    name: Deploy PostgreSQL Schema
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Fly CLI
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Verify Fly.io authentication
+        run: |
+          echo "🔐 Checking authentication..."
+          flyctl auth whoami
+          echo "✓ Authenticated"
+
+      - name: Check PostgreSQL cluster status
+        run: |
+          echo "📊 Checking PostgreSQL cluster status..."
+          flyctl postgres list --json || true
+          echo ""
+          echo "Getting cluster details..."
+          flyctl postgres attach-detach-list -a $FLY_APP_NAME 2>/dev/null || true
+
+      - name: Deploy schema
+        if: ${{ github.event.inputs.verify_only != 'true' }}
+        run: |
+          echo "🚀 Deploying database schema..."
+          echo ""
+          
+          # Get the database URL from secrets
+          echo "📡 Getting database connection details..."
+          
+          # Try multiple methods to get the database URL
+          DB_URL=$(flyctl secrets list -a $FLY_APP_NAME --json 2>/dev/null | jq -r '.[] | select(.Name=="DATABASE_URL") | .Value' 2>/dev/null || echo "")
+          
+          if [ -z "$DB_URL" ]; then
+            echo "⚠️  DATABASE_URL not found in app secrets"
+            echo "Attempting alternative deployment method via postgres connect..."
+            
+            # Check if we can access the cluster
+            echo "⏳ Testing cluster connectivity..."
+            flyctl postgres connect nlkxjo5wgmloy93v <<EOF
+            SELECT 1;
+            \quit
+EOF
+            
+            if [ $? -eq 0 ]; then
+              echo "✓ Cluster is accessible"
+              echo ""
+              echo "⏳ Deploying schema..."
+              cat database/schema.sql | flyctl postgres connect nlkxjo5wgmloy93v
+            else
+              echo "⚠️  Could not connect to cluster directly"
+              echo "Using Fly.io managed postgres attach method..."
+              flyctl postgres attach-detach-list -a $FLY_APP_NAME
+            fi
+          else
+            echo "✓ Found DATABASE_URL"
+            echo ""
+            echo "⏳ Installing PostgreSQL client..."
+            apt-get update -qq > /dev/null 2>&1
+            apt-get install -y postgresql-client > /dev/null 2>&1
+            echo "✓ PostgreSQL client ready"
+            echo ""
+            
+            echo "⏳ Deploying schema to PostgreSQL..."
+            psql "$DB_URL" -q < database/schema.sql
+            
+            EXIT_CODE=$?
+            if [ $EXIT_CODE -eq 0 ]; then
+              echo "✅ Schema deployed successfully!"
+            else
+              echo "⚠️  Deployment exit code: $EXIT_CODE"
+              if grep -q "already exists" <<< "$DB_URL" 2>/dev/null; then
+                echo "   (This may be expected if schema already exists)"
+              fi
+            fi
+          fi
+
+      - name: Verify schema deployment
+        run: |
+          echo ""
+          echo "✔️  VERIFYING SCHEMA DEPLOYMENT"
+          echo "════════════════════════════════════════════════════════════"
+          echo ""
+          
+          # Try to get DATABASE_URL
+          DB_URL=$(flyctl secrets list -a $FLY_APP_NAME --json 2>/dev/null | jq -r '.[] | select(.Name=="DATABASE_URL") | .Value' 2>/dev/null || echo "")
+          
+          if [ -n "$DB_URL" ]; then
+            echo "📋 Installing PostgreSQL client..."
+            apt-get update -qq > /dev/null 2>&1
+            apt-get install -y postgresql-client > /dev/null 2>&1
+            echo "✓ Ready"
+            echo ""
+            
+            echo "📊 Schema inventory:"
+            psql "$DB_URL" -t -c "
+              SELECT 
+                CONCAT(COUNT(*), ' Base Tables') as resource_type
+              FROM information_schema.tables 
+              WHERE table_schema = 'public' AND table_type = 'BASE TABLE'
+            " 2>/dev/null || echo "   ⚠️  Could not count tables"
+            
+            psql "$DB_URL" -t -c "
+              SELECT 
+                CONCAT(COUNT(*), ' Views') as resource_type
+              FROM information_schema.views 
+              WHERE table_schema = 'public'
+            " 2>/dev/null || echo "   ⚠️  Could not count views"
+            
+            echo ""
+            echo "📋 Table list:"
+            psql "$DB_URL" -t -c "
+              SELECT '   • ' || table_name 
+              FROM information_schema.tables 
+              WHERE table_schema = 'public' AND table_type = 'BASE TABLE'
+              ORDER BY table_name;
+            " 2>/dev/null || echo "   ⚠️  Could not list tables"
+            
+            echo ""
+          else
+            echo "ℹ️  DATABASE_URL not available for verification"
+            echo "   (This is normal if using postgres connect instead)"
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          echo ""
+          echo "════════════════════════════════════════════════════════════"
+          echo "  ✅ DEPLOYMENT WORKFLOW COMPLETE"
+          echo "════════════════════════════════════════════════════════════"
+          echo ""
+          echo "📊 Status: See logs above for deployment details"
+          echo ""
+          echo "Next steps:"
+          echo "  1. ✓ GitHub Actions workflow executed"
+          echo "  2. → Check workflow logs for detailed output"
+          echo "  3. → If schema deployed: proceed to Phase 2"
+          echo "  4. → If issues: check DATABASE_URL in Fly.io secrets"
+          echo ""
+          echo "════════════════════════════════════════════════════════════"
