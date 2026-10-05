@@ -1,27 +1,21 @@
 app = "sg-property-bot"
-primary_region = "sin"  # Singapore
+primary_region = "sin"
 
 [build]
-builder = "paketobuildpacks"
+dockerfile = "./Dockerfile"
 
 [env]
 NODE_ENV = "production"
 API_PORT = "3000"
+LOG_LEVEL = "info"
 
 [[services]]
 protocol = "tcp"
 internal_port = 3000
-processes = ["app"]
 
-[services.concurrency]
-type = "requests"
-hard_limit = 1000
-soft_limit = 200
-
-[[services.tcp_checks]]
-grace_period = "1s"
-interval = "10s"
-timeout = "5s"
+[[services.ports]]
+port = 443
+handlers = ["tls", "http"]
 
 [http_service]
 internal_port = 3000
@@ -37,14 +31,10 @@ timeout = "10s"
 method = "GET"
 path = "/health"
 
-[[statics]]
-guest_path = "/app/public"
-url_prefix = "/public"
-
-[env]
-DATABASE_URL = "postgresql://user:pass@db.internal:5432/sg_property_bot"
-REDIS_URL = "redis://redis.internal:6379"
-
 [mounts]
 source = "logs"
 destination = "/app/logs"
+size_gb = 10
+
+
+

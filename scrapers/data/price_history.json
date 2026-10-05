@@ -1,0 +1,122 @@
+{
+  "c909eb2a": {
+    "title": "Punggol B2 Industrial Space",
+    "location": "Punggol Industrial Estate",
+    "source": "PropertyGuru",
+    "prices": [
+      {
+        "date": "2026-10-05T19:22:06.550578",
+        "price": 352000
+      },
+      {
+        "date": "2026-10-05T19:22:23.755872",
+        "price": 352000
+      }
+    ]
+  },
+  "33807bba": {
+    "title": "Serangoon B2 Industrial Unit",
+    "location": "Serangoon North",
+    "source": "PropertyGuru",
+    "prices": [
+      {
+        "date": "2026-10-05T19:22:06.550578",
+        "price": 355000
+      },
+      {
+        "date": "2026-10-05T19:22:23.755872",
+        "price": 355000
+      }
+    ]
+  },
+  "b8468c1d": {
+    "title": "Geylang B2 Industrial Space",
+    "location": "Geylang Industrial Estate",
+    "source": "PropertyGuru",
+    "prices": [
+      {
+        "date": "2026-10-05T19:22:06.550578",
+        "price": 350000
+      },
+      {
+        "date": "2026-10-05T19:22:23.755872",
+        "price": 350000
+      }
+    ]
+  },
+  "0562da59": {
+    "title": "Yishun B2 Industrial Unit",
+    "location": "Yishun Industrial Estate",
+    "source": "99.co",
+    "prices": [
+      {
+        "date": "2026-10-05T19:22:06.550578",
+        "price": 359000
+      },
+      {
+        "date": "2026-10-05T19:22:23.755872",
+        "price": 359000
+      }
+    ]
+  },
+  "e0e1961d": {
+    "title": "Joo Chiat B2 Unit",
+    "location": "Joo Chiat Road",
+    "source": "99.co",
+    "prices": [
+      {
+        "date": "2026-10-05T19:22:06.550578",
+        "price": 360000
+      },
+      {
+        "date": "2026-10-05T19:22:23.755872",
+        "price": 360000
+      }
+    ]
+  },
+  "64edef3d": {
+    "title": "Kallang B2 Space",
+    "location": "Kallang Industrial Estate",
+    "source": "99.co",
+    "prices": [
+      {
+        "date": "2026-10-05T19:22:06.550578",
+        "price": 361000
+      },
+      {
+        "date": "2026-10-05T19:22:23.755872",
+        "price": 361000
+      }
+    ]
+  },
+  "4fe0a28a": {
+    "title": "Queenstown B2 Industrial",
+    "location": "Queenstown Industrial Estate",
+    "source": "EdgeProp",
+    "prices": [
+      {
+        "date": "2026-10-05T19:22:06.550578",
+        "price": 370000
+      },
+      {
+        "date": "2026-10-05T19:22:23.755872",
+        "price": 370000
+      }
+    ]
+  },
+  "383a7461": {
+    "title": "Clementi B2 Industrial Space",
+    "location": "Clementi Industrial Park",
+    "source": "EdgeProp",
+    "prices": [
+      {
+        "date": "2026-10-05T19:22:06.550578",
+        "price": 365000
+      },
+      {
+        "date": "2026-10-05T19:22:23.755872",
+        "price": 365000
+      }
+    ]
+  }
+}

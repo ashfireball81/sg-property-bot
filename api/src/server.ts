@@ -3,13 +3,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app: Express = express();
 const PORT = process.env.API_PORT || 3000;
@@ -22,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Health check
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
   res.status(200).json({
     status: 'OK',
     timestamp: new Date().toISOString(),
@@ -31,14 +26,14 @@ app.get('/health', (req, res) => {
 });
 
 // API Routes (to be implemented)
-app.get('/api/properties', (req, res) => {
+app.get('/api/properties', (_req, res) => {
   res.status(200).json({
     message: 'Get all properties - Coming soon',
     status: 'Not implemented',
   });
 });
 
-app.get('/api/listings', (req, res) => {
+app.get('/api/listings', (_req, res) => {
   res.status(200).json({
     message: 'Get all listings - Coming soon',
     status: 'Not implemented',
@@ -46,7 +41,7 @@ app.get('/api/listings', (req, res) => {
 });
 
 // Error handling
-app.use((err: any, req: any, res: any, next: any) => {
+app.use((err: any, _req: any, res: any, _next: any) => {
   console.error(err.stack);
   res.status(500).json({
     error: 'Internal Server Error',
