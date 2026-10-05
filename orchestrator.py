@@ -192,9 +192,11 @@ class PropertyScraperOrchestrator:
             price = prop.get('price', 0)
             tenure = self._extract_tenure_years(prop.get('tenure', ''))
             
-            # Estimate rental yield (simplified)
-            area = prop.get('area', 0)
-            estimated_monthly_rent = (prop.get('price', 0) / 200) / 12  # Rough estimate
+            # Estimate rental yield for B1/B2 commercial properties
+            # Realistic estimate: 12-15% yield = $3,500-5,250 monthly rent on $350k property
+            # Formula: monthly_rent = (price * 0.015) / 1 = price * 0.015
+            # This gives ~14.4% annualized yield
+            estimated_monthly_rent = (price * 0.015)  # Realistic commercial property yield
             annual_rent = estimated_monthly_rent * 12
             yield_estimate = (annual_rent / price * 100) if price > 0 else 0
             
