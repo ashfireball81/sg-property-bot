@@ -1,29 +1,38 @@
-FROM node:18-alpine as builder
+FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY api/package*.json ./
-RUN npm install
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    postgresql-client \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY api/src ./src
-COPY api/tsconfig.json ./
-COPY api/prisma ./prisma
+# Copy requirements
+COPY requirements_phase2.txt requirements.txt ./
 
-RUN npm run build
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements_phase2.txt
 
-# Production stage
-FROM node:18-alpine
+# Copy application files
+COPY database_persistence.py .
+COPY property_analytics.py .
+COPY orchestrator_v3.py .
+COPY config/ ./config/
+COPY scraper/ ./scraper/
+COPY tests/ ./tests/
 
-WORKDIR /app
-
-COPY api/package*.json ./
-RUN npm install --production
-
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/prisma ./prisma
-
+# Create logs directory
 RUN mkdir -p logs
 
-EXPOSE 3000
+# Set environment to production
+ENV PYTHONUNBUFFERED=1
+ENV LOG_LEVEL=INFO
 
-CMD ["node", "dist/server.js"]
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:3000/health || exit 1 || echo "SG Property Bot running"
+
+# Run the orchestrator
+CMD ["python", "-u", "orchestrator_v3.py"]
+

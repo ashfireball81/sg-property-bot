@@ -1,0 +1,861 @@
+{
+  "timestamp": "2026-10-06T08:06:37.268792",
+  "raw_data": {
+    "timestamp": "2026-10-06T08:06:37.267625",
+    "sources": {
+      "PropertyGuru": {
+        "status": "success",
+        "count": 2,
+        "properties": [
+          {
+            "source": "PropertyGuru",
+            "title": "Tampines B2General Unit",
+            "price": 340000,
+            "area": 7300,
+            "location": "Tampines Industrial Park",
+            "property_type": "B2 General Industrial",
+            "listing_type": "sale",
+            "url": "https://www.propertyguru.com.sg/property/tampines-b2-general-industrial",
+            "posted_date": "2026-10-04T15:06:37.267625",
+            "agent": "Jennifer Loh",
+            "agent_phone": "+65 8945898053",
+            "description": "Modern industrial facility with excellent access",
+            "tenure": "90 years",
+            "floor": "5",
+            "unit": "02-331",
+            "market_data": {
+              "demand_score": 80,
+              "avg_monthly_rent_psf": 0.4772114965437091
+            }
+          },
+          {
+            "source": "PropertyGuru",
+            "title": "Punggol B2General Unit",
+            "price": 373000,
+            "area": 7400,
+            "location": "Punggol Industrial Estate",
+            "property_type": "B2 General Industrial",
+            "listing_type": "sale",
+            "url": "https://www.propertyguru.com.sg/property/punggol-b2-general-industrial",
+            "posted_date": "2026-09-30T00:06:37.267625",
+            "agent": "Michael Ng",
+            "agent_phone": "+65 9537241606",
+            "description": "Prime b2 general industrial unit in strategic location",
+            "tenure": "75 years",
+            "floor": "4",
+            "unit": "04-414",
+            "market_data": {
+              "demand_score": 85,
+              "avg_monthly_rent_psf": 0.4870457606173175
+            }
+          }
+        ]
+      },
+      "99.co": {
+        "status": "success",
+        "count": 2,
+        "properties": [
+          {
+            "source": "99.co",
+            "title": "Kranji B2General Unit",
+            "price": 242000,
+            "area": 6900,
+            "location": "Kranji Avenue",
+            "property_type": "B2 General Industrial",
+            "listing_type": "sale",
+            "url": "https://www.propertyguru.com.sg/property/kranji-b2-general-industrial",
+            "posted_date": "2026-10-05T07:06:37.267625",
+            "agent": "Andrew Ooi",
+            "agent_phone": "+65 9216542303",
+            "description": "Flexible b2 general industrial space for various uses",
+            "tenure": "87 years",
+            "floor": "1",
+            "unit": "03-573",
+            "market_data": {
+              "demand_score": 72,
+              "avg_monthly_rent_psf": 0.4761263476200499
+            }
+          },
+          {
+            "source": "99.co",
+            "title": "Serangoon B2Heavy Unit",
+            "price": 323000,
+            "area": 7900,
+            "location": "Serangoon North",
+            "property_type": "B2 Heavy Industrial",
+            "listing_type": "sale",
+            "url": "https://www.propertyguru.com.sg/property/serangoon-b2-heavy-industrial",
+            "posted_date": "2026-10-02T18:06:37.267625",
+            "agent": "Robert Chua",
+            "agent_phone": "+65 8935218608",
+            "description": "Established Serangoon North location with high demand",
+            "tenure": "75 years",
+            "floor": "3",
+            "unit": "02-502",
+            "market_data": {
+              "demand_score": 82,
+              "avg_monthly_rent_psf": 0.5513506148376571
+            }
+          }
+        ]
+      },
+      "EdgeProp": {
+        "status": "success",
+        "count": 2,
+        "properties": [
+          {
+            "source": "EdgeProp",
+            "title": "Tuas B1Light Unit",
+            "price": 364000,
+            "area": 8200,
+            "location": "Tuas South Industrial Estate",
+            "property_type": "B1 Light Industrial",
+            "listing_type": "sale",
+            "url": "https://www.propertyguru.com.sg/property/tuas-b1-light-industrial",
+            "posted_date": "2026-10-05T03:06:37.267625",
+            "agent": "Claudia Tan",
+            "agent_phone": "+65 9924660673",
+            "description": "Modern industrial facility with excellent access",
+            "tenure": "80 years",
+            "floor": "4",
+            "unit": "03-587",
+            "market_data": {
+              "demand_score": 75,
+              "avg_monthly_rent_psf": 0.510388013527007
+            }
+          },
+          {
+            "source": "EdgeProp",
+            "title": "Jurong B1Light Unit",
+            "price": 374000,
+            "area": 9300,
+            "location": "Jurong East Industrial Zone",
+            "property_type": "B1 Light Industrial",
+            "listing_type": "sale",
+            "url": "https://www.propertyguru.com.sg/property/jurong-b1-light-industrial",
+            "posted_date": "2026-10-03T14:06:37.267625",
+            "agent": "Rachel Goh",
+            "agent_phone": "+65 9841229823",
+            "description": "Well-maintained b1 light industrial space in Jurong East Industrial Zone",
+            "tenure": "84 years",
+            "floor": "3",
+            "unit": "02-948",
+            "market_data": {
+              "demand_score": 83,
+              "avg_monthly_rent_psf": 0.5808629114250647
+            }
+          }
+        ]
+      },
+      "URA": {
+        "status": "success",
+        "count": 2,
+        "properties": [
+          {
+            "source": "URA",
+            "title": "Geylang B1Light Unit",
+            "price": 348000,
+            "area": 7000,
+            "location": "Geylang Industrial Estate",
+            "property_type": "B1 Light Industrial",
+            "listing_type": "sale",
+            "url": "https://www.propertyguru.com.sg/property/geylang-b1-light-industrial",
+            "posted_date": "2026-10-03T20:06:37.267625",
+            "agent": "Sophie Quah",
+            "agent_phone": "+65 8510333552",
+            "description": "Prime b1 light industrial unit in strategic location",
+            "tenure": "90 years",
+            "floor": "2",
+            "unit": "02-549",
+            "market_data": {
+              "demand_score": 78,
+              "avg_monthly_rent_psf": 0.48996483295571386
+            }
+          },
+          {
+            "source": "URA",
+            "title": "Woodlands B1Light Unit",
+            "price": 259000,
+            "area": 6700,
+            "location": "Woodlands Industrial Zone",
+            "property_type": "B1 Light Industrial",
+            "listing_type": "sale",
+            "url": "https://www.propertyguru.com.sg/property/woodlands-b1-light-industrial",
+            "posted_date": "2026-09-30T16:06:37.267625",
+            "agent": "Rebecca Chua",
+            "agent_phone": "+65 8922939819",
+            "description": "Flexible b1 light industrial space for various uses",
+            "tenure": "87 years",
+            "floor": "1",
+            "unit": "01-514",
+            "market_data": {
+              "demand_score": 76,
+              "avg_monthly_rent_psf": 0.45452657894571924
+            }
+          }
+        ]
+      }
+    },
+    "total_properties": 11
+  },
+  "analysis": {
+    "analysis_date": "2026-10-06T08:06:37.268218",
+    "properties_analyzed": [
+      {
+        "property_info": {
+          "title": "Tampines B2General Unit",
+          "location": "Tampines Industrial Park",
+          "price": "$340,000",
+          "area": "7,300 sqft",
+          "tenure": "90 years",
+          "url": "https://www.propertyguru.com.sg/property/tampines-b2-general-industrial"
+        },
+        "market_position": {
+          "price_psf": "$46.58",
+          "market_avg_psf": "$40.00",
+          "price_vs_market": "+16.4%",
+          "location_tier": "A",
+          "demand_score": "80/100",
+          "competitive_position": "OVERVALUED - Above market"
+        },
+        "rental_analysis": {
+          "estimated_monthly_rent": "$3,484",
+          "estimated_annual_rent": "$41,804",
+          "rent_per_sqft_monthly": "$0.48",
+          "market_rent_benchmark": "$3,484/month",
+          "rental_stability": "MEDIUM"
+        },
+        "yield_analysis": {
+          "gross_yield": "12.30%",
+          "net_yield": "9.84%",
+          "net_annual_income": "$4,112",
+          "yield_vs_target": "BELOW TARGET"
+        },
+        "roi_projections": {
+          "5_year_roi": "74.6%",
+          "5_year_value": "$593,697",
+          "10_year_roi": "151.0%",
+          "10_year_value": "$853,266",
+          "20_year_roi": "309.8%",
+          "20_year_value": "$1,393,204",
+          "projection_method": "Conservative market growth + cumulative rental returns"
+        },
+        "profitability_metrics": {
+          "annual_gross_revenue": "$41,804",
+          "annual_maintenance": "$6,800",
+          "annual_property_tax": "$4,080",
+          "annual_insurance": "$1,020",
+          "total_annual_costs": "$12,700",
+          "net_annual_income": "$29,104",
+          "profit_margin": "69.6%",
+          "breakeven_months": "140.2"
+        },
+        "risk_assessment": {
+          "risk_score": "65/100 (MEDIUM)",
+          "tenure_risk": "VERY LOW - Lease security excellent",
+          "market_risk": "MEDIUM - Stable demand",
+          "liquidity_risk": "MEDIUM",
+          "key_risks": [
+            "Premium valuation - less margin of safety"
+          ]
+        },
+        "building_analysis": {
+          "property_type": "B2 General Industrial",
+          "building_category": "B1/B2 Mixed",
+          "tenure": "90 years",
+          "tenure_status": "VERY LOW - Lease security excellent",
+          "floor": "Floor 5",
+          "unit": "02-331",
+          "size_category": "Medium",
+          "location_logistics": "Good access"
+        },
+        "investment_recommendation": {
+          "investment_score": "78.5/100",
+          "recommendation": "\ud83d\udfe2 BUY - Good value, worth pursuing",
+          "primary_appeal": "CAPITAL APPRECIATION - Strong growth potential",
+          "target_investor": "FIRST-TIME BUYERS - Affordable entry point with upside",
+          "action": "\ud83d\udccb SHORTLIST - Add to watchlist for monitoring"
+        },
+        "analysis_metadata": {
+          "analyzed_at": "2026-10-06T08:06:37.267625",
+          "market_data_source": "SG 2026 Market Research",
+          "methodology": "Conservative valuation with local market benchmarks"
+        }
+      },
+      {
+        "property_info": {
+          "title": "Punggol B2General Unit",
+          "location": "Punggol Industrial Estate",
+          "price": "$373,000",
+          "area": "7,400 sqft",
+          "tenure": "75 years",
+          "url": "https://www.propertyguru.com.sg/property/punggol-b2-general-industrial"
+        },
+        "market_position": {
+          "price_psf": "$50.41",
+          "market_avg_psf": "$42.00",
+          "price_vs_market": "+20.0%",
+          "location_tier": "A",
+          "demand_score": "85/100",
+          "competitive_position": "OVERVALUED - Above market"
+        },
+        "rental_analysis": {
+          "estimated_monthly_rent": "$3,604",
+          "estimated_annual_rent": "$43,250",
+          "rent_per_sqft_monthly": "$0.49",
+          "market_rent_benchmark": "$3,604/month",
+          "rental_stability": "HIGH"
+        },
+        "yield_analysis": {
+          "gross_yield": "11.60%",
+          "net_yield": "9.28%",
+          "net_annual_income": "$4,012",
+          "yield_vs_target": "BELOW TARGET"
+        },
+        "roi_projections": {
+          "5_year_roi": "71.1%",
+          "5_year_value": "$638,264",
+          "10_year_roi": "144.0%",
+          "10_year_value": "$909,968",
+          "20_year_roi": "295.8%",
+          "20_year_value": "$1,476,197",
+          "projection_method": "Conservative market growth + cumulative rental returns"
+        },
+        "profitability_metrics": {
+          "annual_gross_revenue": "$43,250",
+          "annual_maintenance": "$7,460",
+          "annual_property_tax": "$4,476",
+          "annual_insurance": "$1,119",
+          "total_annual_costs": "$13,855",
+          "net_annual_income": "$29,395",
+          "profit_margin": "68.0%",
+          "breakeven_months": "152.3"
+        },
+        "risk_assessment": {
+          "risk_score": "65/100 (MEDIUM)",
+          "tenure_risk": "MEDIUM - Monitor renewal timeline",
+          "market_risk": "LOW - High demand, strong market",
+          "liquidity_risk": "LOW",
+          "key_risks": [
+            "Premium valuation - less margin of safety"
+          ]
+        },
+        "building_analysis": {
+          "property_type": "B2 General Industrial",
+          "building_category": "B2 Heavy Industrial",
+          "tenure": "75 years",
+          "tenure_status": "MEDIUM - Monitor renewal timeline",
+          "floor": "Floor 4",
+          "unit": "04-414",
+          "size_category": "Medium",
+          "location_logistics": "Excellent access"
+        },
+        "investment_recommendation": {
+          "investment_score": "82.675/100",
+          "recommendation": "\ud83d\udfe2 STRONG BUY - Excellent opportunity",
+          "primary_appeal": "CAPITAL APPRECIATION - Strong growth potential",
+          "target_investor": "FIRST-TIME BUYERS - Affordable entry point with upside",
+          "action": "\ud83d\udccb SHORTLIST - Add to watchlist for monitoring"
+        },
+        "analysis_metadata": {
+          "analyzed_at": "2026-10-06T08:06:37.267625",
+          "market_data_source": "SG 2026 Market Research",
+          "methodology": "Conservative valuation with local market benchmarks"
+        }
+      },
+      {
+        "property_info": {
+          "title": "Kranji B2General Unit",
+          "location": "Kranji Avenue",
+          "price": "$242,000",
+          "area": "6,900 sqft",
+          "tenure": "87 years",
+          "url": "https://www.propertyguru.com.sg/property/kranji-b2-general-industrial"
+        },
+        "market_position": {
+          "price_psf": "$35.07",
+          "market_avg_psf": "$35.00",
+          "price_vs_market": "+0.2%",
+          "location_tier": "C",
+          "demand_score": "72/100",
+          "competitive_position": "FAIR VALUE - At market average"
+        },
+        "rental_analysis": {
+          "estimated_monthly_rent": "$3,285",
+          "estimated_annual_rent": "$39,423",
+          "rent_per_sqft_monthly": "$0.48",
+          "market_rent_benchmark": "$3,285/month",
+          "rental_stability": "MEDIUM"
+        },
+        "yield_analysis": {
+          "gross_yield": "16.29%",
+          "net_yield": "13.03%",
+          "net_annual_income": "$5,138",
+          "yield_vs_target": "+1.03%"
+        },
+        "roi_projections": {
+          "5_year_roi": "94.6%",
+          "5_year_value": "$470,917",
+          "10_year_roi": "190.9%",
+          "10_year_value": "$704,013",
+          "20_year_roi": "389.7%",
+          "20_year_value": "$1,185,010",
+          "projection_method": "Conservative market growth + cumulative rental returns"
+        },
+        "profitability_metrics": {
+          "annual_gross_revenue": "$39,423",
+          "annual_maintenance": "$4,840",
+          "annual_property_tax": "$2,904",
+          "annual_insurance": "$726",
+          "total_annual_costs": "$9,270",
+          "net_annual_income": "$30,153",
+          "profit_margin": "76.5%",
+          "breakeven_months": "96.3"
+        },
+        "risk_assessment": {
+          "risk_score": "55/100 (MEDIUM)",
+          "tenure_risk": "LOW - Lease secure",
+          "market_risk": "MEDIUM-HIGH - Softer demand",
+          "liquidity_risk": "MEDIUM",
+          "key_risks": [
+            "Low-risk profile - good fundamentals"
+          ]
+        },
+        "building_analysis": {
+          "property_type": "B2 General Industrial",
+          "building_category": "B2 Warehouse",
+          "tenure": "87 years",
+          "tenure_status": "LOW - Lease secure",
+          "floor": "Floor 1",
+          "unit": "03-573",
+          "size_category": "Medium",
+          "location_logistics": "Good access"
+        },
+        "investment_recommendation": {
+          "investment_score": "83.01496633582819/100",
+          "recommendation": "\ud83d\udfe2 STRONG BUY - Excellent opportunity",
+          "primary_appeal": "CAPITAL APPRECIATION - Strong growth potential",
+          "target_investor": "GROWTH INVESTORS - Capital appreciation focus",
+          "action": "\ud83d\udcde CONTACT AGENT - Schedule viewing immediately"
+        },
+        "analysis_metadata": {
+          "analyzed_at": "2026-10-06T08:06:37.267625",
+          "market_data_source": "SG 2026 Market Research",
+          "methodology": "Conservative valuation with local market benchmarks"
+        }
+      },
+      {
+        "property_info": {
+          "title": "Serangoon B2Heavy Unit",
+          "location": "Serangoon North",
+          "price": "$323,000",
+          "area": "7,900 sqft",
+          "tenure": "75 years",
+          "url": "https://www.propertyguru.com.sg/property/serangoon-b2-heavy-industrial"
+        },
+        "market_position": {
+          "price_psf": "$40.89",
+          "market_avg_psf": "$45.00",
+          "price_vs_market": "-9.1%",
+          "location_tier": "A",
+          "demand_score": "82/100",
+          "competitive_position": "GOOD VALUE - Below market average"
+        },
+        "rental_analysis": {
+          "estimated_monthly_rent": "$4,356",
+          "estimated_annual_rent": "$52,268",
+          "rent_per_sqft_monthly": "$0.55",
+          "market_rent_benchmark": "$4,356/month",
+          "rental_stability": "HIGH"
+        },
+        "yield_analysis": {
+          "gross_yield": "16.18%",
+          "net_yield": "12.95%",
+          "net_annual_income": "$6,766",
+          "yield_vs_target": "+0.95%"
+        },
+        "roi_projections": {
+          "5_year_roi": "94.1%",
+          "5_year_value": "$626,785",
+          "10_year_roi": "189.8%",
+          "10_year_value": "$936,148",
+          "20_year_roi": "387.5%",
+          "20_year_value": "$1,574,634",
+          "projection_method": "Conservative market growth + cumulative rental returns"
+        },
+        "profitability_metrics": {
+          "annual_gross_revenue": "$52,268",
+          "annual_maintenance": "$6,460",
+          "annual_property_tax": "$3,876",
+          "annual_insurance": "$969",
+          "total_annual_costs": "$12,105",
+          "net_annual_income": "$40,163",
+          "profit_margin": "76.8%",
+          "breakeven_months": "96.5"
+        },
+        "risk_assessment": {
+          "risk_score": "50/100 (MEDIUM)",
+          "tenure_risk": "MEDIUM - Monitor renewal timeline",
+          "market_risk": "MEDIUM - Stable demand",
+          "liquidity_risk": "LOW",
+          "key_risks": [
+            "Low-risk profile - good fundamentals"
+          ]
+        },
+        "building_analysis": {
+          "property_type": "B2 Heavy Industrial",
+          "building_category": "B2 General Industrial",
+          "tenure": "75 years",
+          "tenure_status": "MEDIUM - Monitor renewal timeline",
+          "floor": "Floor 3",
+          "unit": "02-502",
+          "size_category": "Medium",
+          "location_logistics": "Excellent access"
+        },
+        "investment_recommendation": {
+          "investment_score": "93.81628831534856/100",
+          "recommendation": "\ud83d\udfe2 STRONG BUY - Excellent opportunity",
+          "primary_appeal": "CAPITAL APPRECIATION - Strong growth potential",
+          "target_investor": "GROWTH INVESTORS - Capital appreciation focus",
+          "action": "\ud83d\udcde CONTACT AGENT - Schedule viewing immediately"
+        },
+        "analysis_metadata": {
+          "analyzed_at": "2026-10-06T08:06:37.267625",
+          "market_data_source": "SG 2026 Market Research",
+          "methodology": "Conservative valuation with local market benchmarks"
+        }
+      },
+      {
+        "property_info": {
+          "title": "Tuas B1Light Unit",
+          "location": "Tuas South Industrial Estate",
+          "price": "$364,000",
+          "area": "8,200 sqft",
+          "tenure": "80 years",
+          "url": "https://www.propertyguru.com.sg/property/tuas-b1-light-industrial"
+        },
+        "market_position": {
+          "price_psf": "$44.39",
+          "market_avg_psf": "$40.00",
+          "price_vs_market": "+11.0%",
+          "location_tier": "B",
+          "demand_score": "75/100",
+          "competitive_position": "OVERVALUED - Above market"
+        },
+        "rental_analysis": {
+          "estimated_monthly_rent": "$4,185",
+          "estimated_annual_rent": "$50,222",
+          "rent_per_sqft_monthly": "$0.51",
+          "market_rent_benchmark": "$4,185/month",
+          "rental_stability": "MEDIUM"
+        },
+        "yield_analysis": {
+          "gross_yield": "13.80%",
+          "net_yield": "11.04%",
+          "net_annual_income": "$5,543",
+          "yield_vs_target": "BELOW TARGET"
+        },
+        "roi_projections": {
+          "5_year_roi": "82.1%",
+          "5_year_value": "$662,943",
+          "10_year_roi": "166.0%",
+          "10_year_value": "$968,173",
+          "20_year_roi": "339.8%",
+          "20_year_value": "$1,600,900",
+          "projection_method": "Conservative market growth + cumulative rental returns"
+        },
+        "profitability_metrics": {
+          "annual_gross_revenue": "$50,222",
+          "annual_maintenance": "$7,280",
+          "annual_property_tax": "$4,368",
+          "annual_insurance": "$1,092",
+          "total_annual_costs": "$13,540",
+          "net_annual_income": "$36,682",
+          "profit_margin": "73.0%",
+          "breakeven_months": "119.1"
+        },
+        "risk_assessment": {
+          "risk_score": "50/100 (MEDIUM)",
+          "tenure_risk": "LOW - Lease secure",
+          "market_risk": "MEDIUM - Stable demand",
+          "liquidity_risk": "MEDIUM",
+          "key_risks": [
+            "Low-risk profile - good fundamentals"
+          ]
+        },
+        "building_analysis": {
+          "property_type": "B1 Light Industrial",
+          "building_category": "B2 General Industrial",
+          "tenure": "80 years",
+          "tenure_status": "LOW - Lease secure",
+          "floor": "Floor 4",
+          "unit": "03-587",
+          "size_category": "Large",
+          "location_logistics": "Good access"
+        },
+        "investment_recommendation": {
+          "investment_score": "95.9/100",
+          "recommendation": "\ud83d\udfe2 STRONG BUY - Excellent opportunity",
+          "primary_appeal": "CAPITAL APPRECIATION - Strong growth potential",
+          "target_investor": "GROWTH INVESTORS - Capital appreciation focus",
+          "action": "\ud83d\udccb SHORTLIST - Add to watchlist for monitoring"
+        },
+        "analysis_metadata": {
+          "analyzed_at": "2026-10-06T08:06:37.267625",
+          "market_data_source": "SG 2026 Market Research",
+          "methodology": "Conservative valuation with local market benchmarks"
+        }
+      },
+      {
+        "property_info": {
+          "title": "Jurong B1Light Unit",
+          "location": "Jurong East Industrial Zone",
+          "price": "$374,000",
+          "area": "9,300 sqft",
+          "tenure": "84 years",
+          "url": "https://www.propertyguru.com.sg/property/jurong-b1-light-industrial"
+        },
+        "market_position": {
+          "price_psf": "$40.22",
+          "market_avg_psf": "$40.00",
+          "price_vs_market": "+0.5%",
+          "location_tier": "B",
+          "demand_score": "83/100",
+          "competitive_position": "FAIR VALUE - At market average"
+        },
+        "rental_analysis": {
+          "estimated_monthly_rent": "$5,402",
+          "estimated_annual_rent": "$64,824",
+          "rent_per_sqft_monthly": "$0.58",
+          "market_rent_benchmark": "$5,402/month",
+          "rental_stability": "HIGH"
+        },
+        "yield_analysis": {
+          "gross_yield": "17.33%",
+          "net_yield": "13.87%",
+          "net_annual_income": "$8,989",
+          "yield_vs_target": "+1.87%"
+        },
+        "roi_projections": {
+          "5_year_roi": "99.8%",
+          "5_year_value": "$747,268",
+          "10_year_roi": "201.3%",
+          "10_year_value": "$1,126,995",
+          "20_year_roi": "410.5%",
+          "20_year_value": "$1,909,329",
+          "projection_method": "Conservative market growth + cumulative rental returns"
+        },
+        "profitability_metrics": {
+          "annual_gross_revenue": "$64,824",
+          "annual_maintenance": "$7,480",
+          "annual_property_tax": "$4,488",
+          "annual_insurance": "$1,122",
+          "total_annual_costs": "$13,890",
+          "net_annual_income": "$50,934",
+          "profit_margin": "78.6%",
+          "breakeven_months": "88.1"
+        },
+        "risk_assessment": {
+          "risk_score": "50/100 (MEDIUM)",
+          "tenure_risk": "LOW - Lease secure",
+          "market_risk": "MEDIUM - Stable demand",
+          "liquidity_risk": "LOW",
+          "key_risks": [
+            "Low-risk profile - good fundamentals"
+          ]
+        },
+        "building_analysis": {
+          "property_type": "B1 Light Industrial",
+          "building_category": "B2 General Industrial",
+          "tenure": "84 years",
+          "tenure_status": "LOW - Lease secure",
+          "floor": "Floor 3",
+          "unit": "02-948",
+          "size_category": "Large",
+          "location_logistics": "Excellent access"
+        },
+        "investment_recommendation": {
+          "investment_score": "94.38232124707476/100",
+          "recommendation": "\ud83d\udfe2 STRONG BUY - Excellent opportunity",
+          "primary_appeal": "CAPITAL APPRECIATION - Strong growth potential",
+          "target_investor": "GROWTH INVESTORS - Capital appreciation focus",
+          "action": "\ud83d\udcde CONTACT AGENT - Schedule viewing immediately"
+        },
+        "analysis_metadata": {
+          "analyzed_at": "2026-10-06T08:06:37.267625",
+          "market_data_source": "SG 2026 Market Research",
+          "methodology": "Conservative valuation with local market benchmarks"
+        }
+      },
+      {
+        "property_info": {
+          "title": "Geylang B1Light Unit",
+          "location": "Geylang Industrial Estate",
+          "price": "$348,000",
+          "area": "7,000 sqft",
+          "tenure": "90 years",
+          "url": "https://www.propertyguru.com.sg/property/geylang-b1-light-industrial"
+        },
+        "market_position": {
+          "price_psf": "$49.71",
+          "market_avg_psf": "$38.00",
+          "price_vs_market": "+30.8%",
+          "location_tier": "B",
+          "demand_score": "78/100",
+          "competitive_position": "OVERVALUED - Above market"
+        },
+        "rental_analysis": {
+          "estimated_monthly_rent": "$3,430",
+          "estimated_annual_rent": "$41,157",
+          "rent_per_sqft_monthly": "$0.49",
+          "market_rent_benchmark": "$3,430/month",
+          "rental_stability": "MEDIUM"
+        },
+        "yield_analysis": {
+          "gross_yield": "11.83%",
+          "net_yield": "9.46%",
+          "net_annual_income": "$3,894",
+          "yield_vs_target": "BELOW TARGET"
+        },
+        "roi_projections": {
+          "5_year_roi": "72.3%",
+          "5_year_value": "$599,515",
+          "10_year_roi": "146.3%",
+          "10_year_value": "$857,040",
+          "20_year_roi": "300.4%",
+          "20_year_value": "$1,393,379",
+          "projection_method": "Conservative market growth + cumulative rental returns"
+        },
+        "profitability_metrics": {
+          "annual_gross_revenue": "$41,157",
+          "annual_maintenance": "$6,960",
+          "annual_property_tax": "$4,176",
+          "annual_insurance": "$1,044",
+          "total_annual_costs": "$12,980",
+          "net_annual_income": "$28,177",
+          "profit_margin": "68.5%",
+          "breakeven_months": "148.2"
+        },
+        "risk_assessment": {
+          "risk_score": "65/100 (MEDIUM)",
+          "tenure_risk": "VERY LOW - Lease security excellent",
+          "market_risk": "MEDIUM - Stable demand",
+          "liquidity_risk": "MEDIUM",
+          "key_risks": [
+            "Premium valuation - less margin of safety"
+          ]
+        },
+        "building_analysis": {
+          "property_type": "B1 Light Industrial",
+          "building_category": "B2 Light Industrial",
+          "tenure": "90 years",
+          "tenure_status": "VERY LOW - Lease security excellent",
+          "floor": "Floor 2",
+          "unit": "02-549",
+          "size_category": "Medium",
+          "location_logistics": "Good access"
+        },
+        "investment_recommendation": {
+          "investment_score": "78.3/100",
+          "recommendation": "\ud83d\udfe2 BUY - Good value, worth pursuing",
+          "primary_appeal": "CAPITAL APPRECIATION - Strong growth potential",
+          "target_investor": "FIRST-TIME BUYERS - Affordable entry point with upside",
+          "action": "\ud83d\udccb SHORTLIST - Add to watchlist for monitoring"
+        },
+        "analysis_metadata": {
+          "analyzed_at": "2026-10-06T08:06:37.267625",
+          "market_data_source": "SG 2026 Market Research",
+          "methodology": "Conservative valuation with local market benchmarks"
+        }
+      },
+      {
+        "property_info": {
+          "title": "Woodlands B1Light Unit",
+          "location": "Woodlands Industrial Zone",
+          "price": "$259,000",
+          "area": "6,700 sqft",
+          "tenure": "87 years",
+          "url": "https://www.propertyguru.com.sg/property/woodlands-b1-light-industrial"
+        },
+        "market_position": {
+          "price_psf": "$38.66",
+          "market_avg_psf": "$40.00",
+          "price_vs_market": "-3.4%",
+          "location_tier": "B",
+          "demand_score": "76/100",
+          "competitive_position": "GOOD VALUE - Below market average"
+        },
+        "rental_analysis": {
+          "estimated_monthly_rent": "$3,045",
+          "estimated_annual_rent": "$36,544",
+          "rent_per_sqft_monthly": "$0.45",
+          "market_rent_benchmark": "$3,045/month",
+          "rental_stability": "MEDIUM"
+        },
+        "yield_analysis": {
+          "gross_yield": "14.11%",
+          "net_yield": "11.29%",
+          "net_annual_income": "$4,125",
+          "yield_vs_target": "BELOW TARGET"
+        },
+        "roi_projections": {
+          "5_year_roi": "83.7%",
+          "5_year_value": "$475,754",
+          "10_year_roi": "169.1%",
+          "10_year_value": "$696,981",
+          "20_year_roi": "346.1%",
+          "20_year_value": "$1,155,280",
+          "projection_method": "Conservative market growth + cumulative rental returns"
+        },
+        "profitability_metrics": {
+          "annual_gross_revenue": "$36,544",
+          "annual_maintenance": "$5,180",
+          "annual_property_tax": "$3,108",
+          "annual_insurance": "$777",
+          "total_annual_costs": "$9,865",
+          "net_annual_income": "$26,679",
+          "profit_margin": "73.0%",
+          "breakeven_months": "116.5"
+        },
+        "risk_assessment": {
+          "risk_score": "50/100 (MEDIUM)",
+          "tenure_risk": "LOW - Lease secure",
+          "market_risk": "MEDIUM - Stable demand",
+          "liquidity_risk": "MEDIUM",
+          "key_risks": [
+            "Low-risk profile - good fundamentals"
+          ]
+        },
+        "building_analysis": {
+          "property_type": "B1 Light Industrial",
+          "building_category": "B2 General Industrial",
+          "tenure": "87 years",
+          "tenure_status": "LOW - Lease secure",
+          "floor": "Floor 1",
+          "unit": "01-514",
+          "size_category": "Medium",
+          "location_logistics": "Good access"
+        },
+        "investment_recommendation": {
+          "investment_score": "98.525/100",
+          "recommendation": "\ud83d\udfe2 STRONG BUY - Excellent opportunity",
+          "primary_appeal": "CAPITAL APPRECIATION - Strong growth potential",
+          "target_investor": "GROWTH INVESTORS - Capital appreciation focus",
+          "action": "\ud83d\udccb SHORTLIST - Add to watchlist for monitoring"
+        },
+        "analysis_metadata": {
+          "analyzed_at": "2026-10-06T08:06:37.267625",
+          "market_data_source": "SG 2026 Market Research",
+          "methodology": "Conservative valuation with local market benchmarks"
+        }
+      }
+    ],
+    "summary": {
+      "total_analyzed": 8,
+      "avg_yield": 11.344999999999999,
+      "avg_roi_5yr": 84.0375,
+      "avg_price": 327875.0,
+      "investment_opportunities": 8
+    }
+  }
+}

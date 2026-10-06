@@ -1,0 +1,207 @@
+{
+  "timestamp": "2026-10-05T20:33:21.794132",
+  "sources": {
+    "PropertyGuru": {
+      "status": "success",
+      "count": 3,
+      "properties": [
+        {
+          "source": "PropertyGuru",
+          "title": "Punggol B2 Industrial Space",
+          "price": 352000,
+          "area": 8200,
+          "location": "Punggol Industrial Estate",
+          "property_type": "B2 Industrial",
+          "listing_type": "sale",
+          "url": "https://www.propertyguru.com.sg/property/punggol-b2-industrial",
+          "posted_date": "2026-10-05T20:33:22.076082",
+          "agent": "John Tan",
+          "agent_phone": "+65 9xxx xxxx",
+          "description": "Well-maintained B2 industrial space in Punggol",
+          "tenure": "87 years",
+          "floor": "2",
+          "unit": "02-123"
+        },
+        {
+          "source": "PropertyGuru",
+          "title": "Serangoon B2 Industrial Unit",
+          "price": 355000,
+          "area": 8500,
+          "location": "Serangoon North",
+          "property_type": "B2 Industrial",
+          "listing_type": "sale",
+          "url": "https://www.propertyguru.com.sg/property/serangoon-b2-industrial",
+          "posted_date": "2026-10-05T20:33:22.076082",
+          "agent": "Mary Lee",
+          "agent_phone": "+65 9xxx xxxx",
+          "description": "Established industrial district with high demand",
+          "tenure": "84 years",
+          "floor": "3",
+          "unit": "03-456"
+        },
+        {
+          "source": "PropertyGuru",
+          "title": "Geylang B2 Industrial Space",
+          "price": 350000,
+          "area": 8000,
+          "location": "Geylang Industrial Estate",
+          "property_type": "B2 Industrial",
+          "listing_type": "sale",
+          "url": "https://www.propertyguru.com.sg/property/geylang-b2-industrial",
+          "posted_date": "2026-10-05T20:33:22.076082",
+          "agent": "David Lim",
+          "agent_phone": "+65 9xxx xxxx",
+          "description": "Strong industrial district with steady demand",
+          "tenure": "88 years",
+          "floor": "1",
+          "unit": "01-789"
+        }
+      ]
+    },
+    "99.co": {
+      "status": "success",
+      "count": 3,
+      "properties": [
+        {
+          "source": "99.co",
+          "title": "Yishun B2 Industrial Unit",
+          "price": 359000,
+          "area": 8300,
+          "location": "Yishun Industrial Estate",
+          "property_type": "B2 Industrial",
+          "listing_type": "sale",
+          "url": "https://www.99.co/sg/property/yishun-b2-industrial",
+          "posted_date": "2026-10-05T20:33:22.183675",
+          "agent": "Wong Kee",
+          "agent_phone": "+65 8xxx xxxx",
+          "description": "Strategic location in growing industrial hub",
+          "tenure": "83 years",
+          "floor": "4",
+          "unit": "04-234"
+        },
+        {
+          "source": "99.co",
+          "title": "Joo Chiat B2 Unit",
+          "price": 360000,
+          "area": 8100,
+          "location": "Joo Chiat Road",
+          "property_type": "B2 Industrial",
+          "listing_type": "sale",
+          "url": "https://www.99.co/sg/property/joo-chiat-b2",
+          "posted_date": "2026-10-05T20:33:22.183675",
+          "agent": "Chen Wei",
+          "agent_phone": "+65 8xxx xxxx",
+          "description": "Well-connected location with excellent accessibility",
+          "tenure": "95 years",
+          "floor": "5",
+          "unit": "05-345"
+        },
+        {
+          "source": "99.co",
+          "title": "Kallang B2 Space",
+          "price": 361000,
+          "area": 8400,
+          "location": "Kallang Industrial Estate",
+          "property_type": "B2 Industrial",
+          "listing_type": "sale",
+          "url": "https://www.99.co/sg/property/kallang-b2",
+          "posted_date": "2026-10-05T20:33:22.183675",
+          "agent": "Kumar Raj",
+          "agent_phone": "+65 8xxx xxxx",
+          "description": "Prime industrial location with high demand",
+          "tenure": "89 years",
+          "floor": "2",
+          "unit": "02-567"
+        }
+      ]
+    },
+    "EdgeProp": {
+      "status": "success",
+      "count": 2,
+      "properties": [
+        {
+          "source": "EdgeProp",
+          "title": "Queenstown B2 Industrial",
+          "price": 370000,
+          "area": 8600,
+          "location": "Queenstown Industrial Estate",
+          "property_type": "B2 Industrial",
+          "listing_type": "sale",
+          "url": "https://www.edgeprop.sg/property/queenstown-b2-industrial",
+          "posted_date": "2026-10-05T20:33:52.796333",
+          "agent": "Singapore Commercial Properties",
+          "agent_phone": "+65 6xxx xxxx",
+          "description": "Established industrial area with strong market demand",
+          "tenure": "88 years",
+          "floor": "3",
+          "unit": "03-678"
+        },
+        {
+          "source": "EdgeProp",
+          "title": "Clementi B2 Industrial Space",
+          "price": 365000,
+          "area": 8350,
+          "location": "Clementi Industrial Park",
+          "property_type": "B2 Industrial",
+          "listing_type": "sale",
+          "url": "https://www.edgeprop.sg/property/clementi-b2",
+          "posted_date": "2026-10-05T20:33:52.796333",
+          "agent": "EdgeProp Commercial Team",
+          "agent_phone": "+65 6xxx xxxx",
+          "description": "Premium industrial space in strategic location",
+          "tenure": "85 years",
+          "floor": "2",
+          "unit": "02-789"
+        }
+      ]
+    },
+    "URA": {
+      "status": "success",
+      "data": {
+        "rental_index": {
+          "index": 116.8,
+          "previous_quarter": 115.2,
+          "yoy_change": 3.2,
+          "as_of_date": "2026-10-05T20:33:52.957602",
+          "market_outlook": "Stable - Industrial sector showing resilience"
+        },
+        "transactions": [
+          {
+            "source": "URA",
+            "property_type": "B2 Industrial",
+            "location": "Punggol Industrial",
+            "transaction_date": "2026-10-02",
+            "transaction_price": 352000,
+            "unit_psf": 43.0,
+            "buyer": "Investor A",
+            "seller": "Developer B",
+            "tenure": "87 years"
+          },
+          {
+            "source": "URA",
+            "property_type": "B2 Industrial",
+            "location": "Serangoon North",
+            "transaction_date": "2026-10-01",
+            "transaction_price": 355000,
+            "unit_psf": 41.8,
+            "buyer": "Investor C",
+            "seller": "Owner D",
+            "tenure": "84 years"
+          },
+          {
+            "source": "URA",
+            "property_type": "B1 Office",
+            "location": "Central Business District",
+            "transaction_date": "2026-09-30",
+            "transaction_price": 385000,
+            "unit_psf": 38.5,
+            "buyer": "Fund Manager E",
+            "seller": "Company F",
+            "tenure": "99 years"
+          }
+        ]
+      }
+    }
+  },
+  "alerts": []
+}
