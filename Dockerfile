@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements
-COPY requirements_phase2.txt requirements.txt ./
+COPY requirements_phase2.txt ./
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements_phase2.txt
